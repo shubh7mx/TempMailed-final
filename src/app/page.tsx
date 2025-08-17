@@ -321,6 +321,20 @@ function HomePageContent() {
                     <EmailViewer emails={inbox} token={token} />
                 </div>
                 
+                <div className="w-full text-left py-8 max-w-4xl mx-auto space-y-6">
+                    <h2 className="text-2xl font-bold text-center mb-4">
+                    What is a Disposable Temporary E-mail?
+                    </h2>
+                    <div className="text-muted-foreground space-y-4">
+                        <p>
+                        A disposable or temporary email is a short-term, throwaway email address you can use for any online sign-up. It acts as a shield, keeping your real inbox clean from spam and protecting your personal information from data breaches. Use it for newsletters, free trials, or any service where you don't want to share your primary email.
+                        </p>
+                        <p>
+                        With TempMailed, you can instantly generate an address, receive confirmation emails, and then simply forget about it. No registration, no passwords—just simple, secure, and anonymous email on demand.
+                        </p>
+                    </div>
+                </div>
+
                 <div className="space-y-4">
                     <AdPlaceholder type="horizontal" />
                 </div>
@@ -434,3 +448,5 @@ export default function HomePage() {
     </Suspense>
   );
 }
+
+    
