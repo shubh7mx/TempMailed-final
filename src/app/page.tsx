@@ -18,6 +18,7 @@ import type { Email } from "@/types";
 import { blogPosts } from '@/lib/blog-posts.tsx';
 import { createAccount, fetchInbox } from "./actions";
 import { AdPlaceholder } from "@/components/ad-placeholder";
+import { GoogleAd } from "@/components/google-ad";
 
 export const dynamic = 'force-dynamic';
 
@@ -73,8 +74,8 @@ function HomePageContent() {
 
   const handleRefresh = useCallback(async (manual = false) => {
     const currentToken = token ?? (typeof window !== 'undefined' ? localStorage.getItem("tempEmailToken") : null);
-    if (!currentToken || refreshingInbox) return;
-  
+    if (!currentToken) return;
+
     setRefreshingInbox(true);
   
     try {
@@ -90,9 +91,11 @@ function HomePageContent() {
     } finally {
       setRefreshingInbox(false);
       // Always restart the timer after any refresh
-      startRefreshTimer();
+      if (manual) {
+        startRefreshTimer();
+      }
     }
-  }, [refreshingInbox, startRefreshTimer, token]);
+  }, [startRefreshTimer, token]);
   
   const handleNewAddress = useCallback(async () => {
     setGenerating(true);
@@ -341,7 +344,7 @@ function HomePageContent() {
 
                 <div className="w-full py-8">
                      <div className="mb-8">
-                        <AdPlaceholder type="horizontal" />
+                        <GoogleAd />
                     </div>
                     <h2 className="text-2xl font-bold mb-8 text-center">Popular Articles</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
