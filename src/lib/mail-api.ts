@@ -1,7 +1,7 @@
 
 import type { Email } from '@/types';
 
-const API_BASE = 'https://mail.vlkn.in';
+const API_BASE = 'https://mail.vlkn.me';
 
 async function fetchWithRetry(url: string, options: RequestInit, retries = 3, delay = 1000) {
     for (let i = 0; i < retries; i++) {
